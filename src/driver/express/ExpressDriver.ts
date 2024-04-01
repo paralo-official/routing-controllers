@@ -96,12 +96,11 @@ export class ExpressDriver extends BaseDriver {
     const defaultMiddlewares: any[] = [];
 
     if (actionMetadata.isBodyUsed) {
+      const bodyParser = await this.loadBodyParser();
       if (actionMetadata.isJsonTyped) {
-        const { json } = await this.loadBodyParser();
-        defaultMiddlewares.push(json(actionMetadata.bodyExtraOptions));
+        defaultMiddlewares.push(bodyParser.json(actionMetadata.bodyExtraOptions));
       } else {
-        const { text } = await this.loadBodyParser();
-        defaultMiddlewares.push(text(actionMetadata.bodyExtraOptions));
+        defaultMiddlewares.push(bodyParser.text(actionMetadata.bodyExtraOptions));
       }
     }
 
