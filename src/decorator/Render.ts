@@ -1,4 +1,4 @@
-import { getMetadataArgsStorage } from '../index';
+import { getMetadataArgsStorage } from '../index.js';
 
 /**
  * Specifies a template to be rendered by a controller action.

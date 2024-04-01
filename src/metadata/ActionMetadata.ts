@@ -1,14 +1,14 @@
-import { Action } from '../Action';
-import { ActionMetadataArgs } from './args/ActionMetadataArgs';
-import { ActionType } from './types/ActionType';
-import { ClassTransformOptions } from 'class-transformer';
-import { ControllerMetadata } from './ControllerMetadata';
-import { InterceptorMetadata } from './InterceptorMetadata';
-import { ParamMetadata } from './ParamMetadata';
-import { ResponseHandlerMetadata } from './ResponseHandleMetadata';
-import { HandlerOptions } from '../decorator-options/HandlerOptions';
-import { RoutingControllersOptions } from '../RoutingControllersOptions';
-import { UseMetadata } from './UseMetadata';
+import type { Action } from '../Action.js';
+import type { ActionMetadataArgs } from './args/ActionMetadataArgs.js';
+import type { ActionType } from './types/ActionType.js';
+import type { ClassTransformOptions } from 'class-transformer';
+import { ControllerMetadata } from './ControllerMetadata.js';
+import { InterceptorMetadata } from './InterceptorMetadata.js';
+import { ParamMetadata } from './ParamMetadata.js';
+import { ResponseHandlerMetadata } from './ResponseHandleMetadata.js';
+import type { HandlerOptions } from '../decorator-options/HandlerOptions.js';
+import type { RoutingControllersOptions } from '../RoutingControllersOptions.js';
+import { UseMetadata } from './UseMetadata.js';
 
 /**
  * Action metadata.

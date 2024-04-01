@@ -1,5 +1,5 @@
-import { getMetadataArgsStorage } from '../index';
-import { Action } from '../Action';
+import { getMetadataArgsStorage } from '../index.js';
+import type { Action } from '../Action.js';
 
 /**
  * Specifies a given interceptor middleware or interceptor function to be used for controller or controller action.

@@ -1,4 +1,4 @@
-import { ResponseHandlerType } from '../types/ResponseHandlerType';
+import type { ResponseHandlerType } from '../types/ResponseHandlerType.js';
 
 /**
  * Storages information about registered response handlers.

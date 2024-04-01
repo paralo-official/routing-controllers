@@ -1,5 +1,5 @@
-import { ValidatorOptions } from 'class-validator';
-import { ClassTransformOptions } from 'class-transformer';
+import type { ValidatorOptions } from 'class-validator';
+import type { ClassTransformOptions } from 'class-transformer';
 
 /**
  * Body decorator parameters.

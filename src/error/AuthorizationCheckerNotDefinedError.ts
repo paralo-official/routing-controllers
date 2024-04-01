@@ -1,4 +1,4 @@
-import { InternalServerError } from '../http-error/InternalServerError';
+import { InternalServerError } from '../http-error/InternalServerError.js';
 
 /**
  * Thrown when authorizationChecker function is not defined in routing-controllers options.

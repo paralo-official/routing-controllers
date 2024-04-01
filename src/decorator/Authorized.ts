@@ -1,4 +1,4 @@
-import { getMetadataArgsStorage } from '../index';
+import { getMetadataArgsStorage } from '../index.js';
 
 /**
  * Marks controller action to have a special access.

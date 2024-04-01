@@ -1,13 +1,13 @@
-import { ActionMetadata } from '../metadata/ActionMetadata';
-import { ControllerMetadata } from '../metadata/ControllerMetadata';
-import { InterceptorMetadata } from '../metadata/InterceptorMetadata';
-import { MiddlewareMetadata } from '../metadata/MiddlewareMetadata';
-import { ParamMetadata } from '../metadata/ParamMetadata';
-import { ParamMetadataArgs } from '../metadata/args/ParamMetadataArgs';
-import { ResponseHandlerMetadata } from '../metadata/ResponseHandleMetadata';
-import { RoutingControllersOptions } from '../RoutingControllersOptions';
-import { UseMetadata } from '../metadata/UseMetadata';
-import { getMetadataArgsStorage } from '../index';
+import { ActionMetadata } from '../metadata/ActionMetadata.js';
+import { ControllerMetadata } from '../metadata/ControllerMetadata.js';
+import { InterceptorMetadata } from '../metadata/InterceptorMetadata.js';
+import { MiddlewareMetadata } from '../metadata/MiddlewareMetadata.js';
+import { ParamMetadata } from '../metadata/ParamMetadata.js';
+import type { ParamMetadataArgs } from '../metadata/args/ParamMetadataArgs.js';
+import { ResponseHandlerMetadata } from '../metadata/ResponseHandleMetadata.js';
+import type { RoutingControllersOptions } from '../RoutingControllersOptions.js';
+import { UseMetadata } from '../metadata/UseMetadata.js';
+import { getMetadataArgsStorage } from '../index.js';
 
 /**
  * Builds metadata from the given metadata arguments.

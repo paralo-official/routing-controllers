@@ -1,4 +1,4 @@
-import { getMetadataArgsStorage } from '../index';
+import { getMetadataArgsStorage } from '../index.js';
 
 /**
  * Injects a request's route parameter value to the controller action parameter.

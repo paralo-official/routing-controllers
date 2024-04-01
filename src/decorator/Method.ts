@@ -1,6 +1,6 @@
-import { HandlerOptions } from '../decorator-options/HandlerOptions';
-import { getMetadataArgsStorage } from '../index';
-import { ActionType } from '../metadata/types/ActionType';
+import type { HandlerOptions } from '../decorator-options/HandlerOptions.js';
+import { getMetadataArgsStorage } from '../index.js';
+import type { ActionType } from '../metadata/types/ActionType.js';
 
 /**
  * Registers an action to be executed when request with specified method comes on a given route.

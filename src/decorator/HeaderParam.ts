@@ -1,5 +1,5 @@
-import { ParamOptions } from '../decorator-options/ParamOptions';
-import { getMetadataArgsStorage } from '../index';
+import type { ParamOptions } from '../decorator-options/ParamOptions.js';
+import { getMetadataArgsStorage } from '../index.js';
 
 /**
  * Injects a request's http header value to the controller action parameter.

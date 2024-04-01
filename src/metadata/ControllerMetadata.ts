@@ -1,11 +1,11 @@
-import { ActionMetadata } from './ActionMetadata';
-import { ControllerMetadataArgs } from './args/ControllerMetadataArgs';
-import { UseMetadata } from './UseMetadata';
-import { getFromContainer } from '../container';
-import { ControllerOptions } from '../decorator-options/ControllerOptions';
-import { ResponseHandlerMetadata } from './ResponseHandleMetadata';
-import { InterceptorMetadata } from './InterceptorMetadata';
-import { Action } from '../Action';
+import { ActionMetadata } from './ActionMetadata.js';
+import type { ControllerMetadataArgs } from './args/ControllerMetadataArgs.js';
+import { UseMetadata } from './UseMetadata.js';
+import { getFromContainer } from '../container.js';
+import type { ControllerOptions } from '../decorator-options/ControllerOptions.js';
+import { ResponseHandlerMetadata } from './ResponseHandleMetadata.js';
+import { InterceptorMetadata } from './InterceptorMetadata.js';
+import type { Action } from '../Action.js';
 
 /**
  * Controller metadata.

@@ -1,5 +1,5 @@
-import { Action } from '../Action';
-import { UnauthorizedError } from '../http-error/UnauthorizedError';
+import type { Action } from '../Action.js';
+import { UnauthorizedError } from '../http-error/UnauthorizedError.js';
 
 /**
  * Thrown when authorization is required thought @CurrentUser decorator.

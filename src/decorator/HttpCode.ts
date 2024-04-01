@@ -1,4 +1,4 @@
-import { getMetadataArgsStorage } from '../index';
+import { getMetadataArgsStorage } from '../index.js';
 
 /**
  * Sets response HTTP status code.

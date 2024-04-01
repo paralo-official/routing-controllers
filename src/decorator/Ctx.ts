@@ -1,4 +1,4 @@
-import { getMetadataArgsStorage } from '../index';
+import { getMetadataArgsStorage } from '../index.js';
 
 /**
  * Injects a Koa's Context object to the controller action parameter.

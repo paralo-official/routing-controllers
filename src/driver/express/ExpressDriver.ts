@@ -1,17 +1,17 @@
-import { UseMetadata } from '../../metadata/UseMetadata';
-import { MiddlewareMetadata } from '../../metadata/MiddlewareMetadata';
-import { ActionMetadata } from '../../metadata/ActionMetadata';
-import { Action } from '../../Action';
-import { ParamMetadata } from '../../metadata/ParamMetadata';
-import { BaseDriver } from '../BaseDriver';
-import { ExpressMiddlewareInterface } from './ExpressMiddlewareInterface';
-import { ExpressErrorMiddlewareInterface } from './ExpressErrorMiddlewareInterface';
-import { AccessDeniedError } from '../../error/AccessDeniedError';
-import { AuthorizationCheckerNotDefinedError } from '../../error/AuthorizationCheckerNotDefinedError';
-import { isPromiseLike } from '../../util/isPromiseLike';
-import { getFromContainer } from '../../container';
-import { AuthorizationRequiredError } from '../../error/AuthorizationRequiredError';
-import { NotFoundError, RoutingControllersOptions } from '../../index';
+import { UseMetadata } from '../../metadata/UseMetadata.js';
+import { MiddlewareMetadata } from '../../metadata/MiddlewareMetadata.js';
+import { ActionMetadata } from '../../metadata/ActionMetadata.js';
+import type { Action } from '../../Action.js';
+import { ParamMetadata } from '../../metadata/ParamMetadata.js';
+import { BaseDriver } from '../BaseDriver.js';
+import type { ExpressMiddlewareInterface } from './ExpressMiddlewareInterface.js';
+import type { ExpressErrorMiddlewareInterface } from './ExpressErrorMiddlewareInterface.js';
+import { AccessDeniedError } from '../../error/AccessDeniedError.js';
+import { AuthorizationCheckerNotDefinedError } from '../../error/AuthorizationCheckerNotDefinedError.js';
+import { isPromiseLike } from '../../util/isPromiseLike.js';
+import { getFromContainer } from '../../container.js';
+import { AuthorizationRequiredError } from '../../error/AuthorizationRequiredError.js';
+import { NotFoundError, type RoutingControllersOptions } from '../../index.js';
 
 import cookie from 'cookie';
 // @ts-ignore

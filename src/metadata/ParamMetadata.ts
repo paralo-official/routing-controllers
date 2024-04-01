@@ -1,9 +1,9 @@
-import { ValidatorOptions } from 'class-validator';
-import { ActionMetadata } from './ActionMetadata';
-import { ParamMetadataArgs } from './args/ParamMetadataArgs';
-import { ParamType } from './types/ParamType';
-import { ClassTransformOptions } from 'class-transformer';
-import { Action } from '../Action';
+import type { ValidatorOptions } from 'class-validator';
+import type { ActionMetadata } from './ActionMetadata.js';
+import type { ParamMetadataArgs } from './args/ParamMetadataArgs.js';
+import type { ParamType } from './types/ParamType.js';
+import type { ClassTransformOptions } from 'class-transformer';
+import type { Action } from '../Action.js';
 
 /**
  * Action Parameter metadata.

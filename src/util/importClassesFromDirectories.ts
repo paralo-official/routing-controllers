@@ -1,11 +1,11 @@
-import * as path from 'path';
-import {globSync} from "glob"
+import { extname, normalize } from 'path';
+import { globSync } from 'glob';
 
 /**
  * Loads all exported classes from the given directory.
  */
 export async function importClassesFromDirectories(directories: string[], formats = ['.js', '.ts', '.tsx']): Promise<Function[]> {
-  const loadFileClasses = function (exported: any, allLoaded: Function[]) {
+  const loadFileClasses = function(exported: any, allLoaded: Function[]) {
     if (exported instanceof Function) {
       allLoaded.push(exported);
     } else if (exported instanceof Array) {
@@ -20,13 +20,13 @@ export async function importClassesFromDirectories(directories: string[], format
   const allFiles = directories.reduce((allDirs, dir) => {
     // Replace \ with / for glob
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    return allDirs.concat(globSync(path.normalize(dir).replace(/\\/g, '/')));
+    return allDirs.concat(globSync(normalize(dir).replace(/\\/g, '/')));
   }, [] as string[]);
 
   const dirs = await Promise.all(allFiles
     .filter(file => {
       const dtsExtension = file.substring(file.length - 5, file.length);
-      return formats.indexOf(path.extname(file)) !== -1 && dtsExtension !== '.d.ts';
+      return formats.indexOf(extname(file)) !== -1 && dtsExtension !== '.d.ts';
     })
     .map(file => {
       return import(file);

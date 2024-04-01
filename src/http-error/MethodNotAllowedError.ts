@@ -1,4 +1,4 @@
-import { HttpError } from './HttpError';
+import { HttpError } from './HttpError.js';
 
 /**
  * Exception for todo HTTP error.

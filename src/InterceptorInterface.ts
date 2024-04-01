@@ -1,4 +1,4 @@
-import { Action } from './Action';
+import type { Action } from './Action.js';
 
 /**
  * Classes that intercepts response result must implement this interface.

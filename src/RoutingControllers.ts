@@ -1,14 +1,14 @@
-import { Action } from './Action';
-import { ActionParameterHandler } from './ActionParameterHandler';
-import { getFromContainer } from './container';
-import { BaseDriver } from './driver/BaseDriver';
-import { InterceptorInterface } from './InterceptorInterface';
-import { MetadataBuilder } from './metadata-builder/MetadataBuilder';
-import { ActionMetadata } from './metadata/ActionMetadata';
-import { InterceptorMetadata } from './metadata/InterceptorMetadata';
-import { RoutingControllersOptions } from './RoutingControllersOptions';
-import { isPromiseLike } from './util/isPromiseLike';
-import { runInSequence } from './util/runInSequence';
+import type { Action } from './Action.js';
+import { ActionParameterHandler } from './ActionParameterHandler.js';
+import { getFromContainer } from './container.js';
+import { BaseDriver } from './driver/BaseDriver.js';
+import type { InterceptorInterface } from './InterceptorInterface.js';
+import { MetadataBuilder } from './metadata-builder/MetadataBuilder.js';
+import { ActionMetadata } from './metadata/ActionMetadata.js';
+import { InterceptorMetadata } from './metadata/InterceptorMetadata.js';
+import type { RoutingControllersOptions } from './RoutingControllersOptions.js';
+import { isPromiseLike } from './util/isPromiseLike.js';
+import { runInSequence } from './util/runInSequence.js';
 
 /**
  * Registers controllers and middlewares in the given server framework.

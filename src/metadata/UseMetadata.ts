@@ -1,4 +1,4 @@
-import { UseMetadataArgs } from './args/UseMetadataArgs';
+import type { UseMetadataArgs } from './args/UseMetadataArgs.js';
 
 /**
  * "Use middleware" metadata.

@@ -1,5 +1,5 @@
-import { Action } from '../Action';
-import { ForbiddenError } from '../http-error/ForbiddenError';
+import type { Action } from '../Action.js';
+import { ForbiddenError } from '../http-error/ForbiddenError.js';
 
 /**
  * Thrown when route is guarded by @Authorized decorator.

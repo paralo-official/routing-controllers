@@ -1,5 +1,5 @@
-import { getMetadataArgsStorage } from '../index';
-import { ControllerOptions } from '../decorator-options/ControllerOptions';
+import { getMetadataArgsStorage } from '../index.js';
+import type { ControllerOptions } from '../decorator-options/ControllerOptions.js';
 
 /**
  * Defines a class as a JSON controller. If JSON controller is used, then all controller actions will return

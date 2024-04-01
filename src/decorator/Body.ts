@@ -1,5 +1,5 @@
-import { BodyOptions } from '../decorator-options/BodyOptions';
-import { getMetadataArgsStorage } from '../index';
+import type { BodyOptions } from '../decorator-options/BodyOptions.js';
+import { getMetadataArgsStorage } from '../index.js';
 
 /**
  * Allows to inject a request body value to the controller action parameter.

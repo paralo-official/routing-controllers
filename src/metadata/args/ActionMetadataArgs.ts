@@ -1,7 +1,7 @@
-import { ActionType } from '../types/ActionType';
-import { Action } from '../../Action';
-import { ActionMetadata } from '../ActionMetadata';
-import { HandlerOptions } from '../../decorator-options/HandlerOptions';
+import type { ActionType } from '../types/ActionType.js';
+import type { Action } from '../../Action.js';
+import { ActionMetadata } from '../ActionMetadata.js';
+import type { HandlerOptions } from '../../decorator-options/HandlerOptions.js';
 
 /**
  * Action metadata used to storage information about registered action.

@@ -1,6 +1,6 @@
-import { BadRequestError } from '../http-error/BadRequestError';
-import { ParamMetadata } from '../metadata/ParamMetadata';
-import { Action } from '../Action';
+import { BadRequestError } from '../http-error/BadRequestError.js';
+import { ParamMetadata } from '../metadata/ParamMetadata.js';
+import type { Action } from '../Action.js';
 
 /**
  * Thrown when parameter is required, but was missing in a user request.

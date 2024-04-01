@@ -1,4 +1,4 @@
-import { HttpError } from './HttpError';
+import { HttpError } from './HttpError.js';
 
 /**
  * Exception for 406 HTTP error.

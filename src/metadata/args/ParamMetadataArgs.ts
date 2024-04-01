@@ -1,6 +1,6 @@
-import { ValidatorOptions } from 'class-validator';
-import { ClassTransformOptions } from 'class-transformer';
-import { ParamType } from '../types/ParamType';
+import type { ValidatorOptions } from 'class-validator';
+import type { ClassTransformOptions } from 'class-transformer';
+import type { ParamType } from '../types/ParamType.js';
 
 /**
  * Controller metadata used to storage information about registered parameters.

@@ -1,5 +1,5 @@
-import { HandlerOptions } from '../decorator-options/HandlerOptions';
-import { getMetadataArgsStorage } from '../index';
+import type { HandlerOptions } from '../decorator-options/HandlerOptions.js';
+import { getMetadataArgsStorage } from '../index.js';
 
 /**
  * Registers a controller method to be executed when DELETE request comes on a given route.

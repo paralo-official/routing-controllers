@@ -1,5 +1,5 @@
-import { HandlerOptions } from '../decorator-options/HandlerOptions';
-import { getMetadataArgsStorage } from '../index';
+import type { HandlerOptions } from '../decorator-options/HandlerOptions.js';
+import { getMetadataArgsStorage } from '../index.js';
 
 /**
  * Registers an action to be executed when PATCH request comes on a given route.

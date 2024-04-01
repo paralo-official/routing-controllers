@@ -1,4 +1,4 @@
-import { ControllerOptions } from '../../decorator-options/ControllerOptions';
+import type { ControllerOptions } from '../../decorator-options/ControllerOptions.js';
 
 /**
  * Controller metadata used to storage information about registered controller.

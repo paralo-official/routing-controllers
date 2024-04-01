@@ -1,7 +1,7 @@
-import { ClassTransformOptions } from 'class-transformer';
-import { ValidatorOptions } from 'class-validator';
-import { AuthorizationChecker } from './AuthorizationChecker';
-import { CurrentUserChecker } from './CurrentUserChecker';
+import type { ClassTransformOptions } from 'class-transformer';
+import type { ValidatorOptions } from 'class-validator';
+import type { AuthorizationChecker } from './AuthorizationChecker.js';
+import type { CurrentUserChecker } from './CurrentUserChecker.js';
 
 /**
  * Routing controller initialization options.

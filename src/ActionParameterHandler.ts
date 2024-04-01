@@ -1,15 +1,15 @@
 import { plainToInstance } from 'class-transformer';
 import { validateOrReject as validate, ValidationError } from 'class-validator';
-import { Action } from './Action';
-import { BadRequestError } from './http-error/BadRequestError';
-import { BaseDriver } from './driver/BaseDriver';
-import { ParameterParseJsonError } from './error/ParameterParseJsonError';
-import { ParamMetadata } from './metadata/ParamMetadata';
-import { ParamRequiredError } from './error/ParamRequiredError';
-import { AuthorizationRequiredError } from './error/AuthorizationRequiredError';
-import { CurrentUserCheckerNotDefinedError } from './error/CurrentUserCheckerNotDefinedError';
-import { isPromiseLike } from './util/isPromiseLike';
-import { InvalidParamError } from './error/ParamNormalizationError';
+import type { Action } from './Action.js';
+import { BadRequestError } from './http-error/BadRequestError.js';
+import { BaseDriver } from './driver/BaseDriver.js';
+import { ParameterParseJsonError } from './error/ParameterParseJsonError.js';
+import { ParamMetadata } from './metadata/ParamMetadata.js';
+import { ParamRequiredError } from './error/ParamRequiredError.js';
+import { AuthorizationRequiredError } from './error/AuthorizationRequiredError.js';
+import { CurrentUserCheckerNotDefinedError } from './error/CurrentUserCheckerNotDefinedError.js';
+import { isPromiseLike } from './util/isPromiseLike.js';
+import { InvalidParamError } from './error/ParamNormalizationError.js';
 
 /**
  * Handles action parameter.

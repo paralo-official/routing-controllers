@@ -1,11 +1,11 @@
-import { ControllerMetadataArgs } from '../metadata/args/ControllerMetadataArgs';
-import { ActionMetadataArgs } from '../metadata/args/ActionMetadataArgs';
-import { ParamMetadataArgs } from '../metadata/args/ParamMetadataArgs';
-import { ResponseHandlerMetadataArgs } from '../metadata/args/ResponseHandleMetadataArgs';
-import { MiddlewareMetadataArgs } from '../metadata/args/MiddlewareMetadataArgs';
-import { UseMetadataArgs } from '../metadata/args/UseMetadataArgs';
-import { UseInterceptorMetadataArgs } from '../metadata/args/UseInterceptorMetadataArgs';
-import { InterceptorMetadataArgs } from '../metadata/args/InterceptorMetadataArgs';
+import type { ControllerMetadataArgs } from '../metadata/args/ControllerMetadataArgs.js';
+import type { ActionMetadataArgs } from '../metadata/args/ActionMetadataArgs.js';
+import type { ParamMetadataArgs } from '../metadata/args/ParamMetadataArgs.js';
+import type { ResponseHandlerMetadataArgs } from '../metadata/args/ResponseHandleMetadataArgs.js';
+import type { MiddlewareMetadataArgs } from '../metadata/args/MiddlewareMetadataArgs.js';
+import type { UseMetadataArgs } from '../metadata/args/UseMetadataArgs.js';
+import type { UseInterceptorMetadataArgs } from '../metadata/args/UseInterceptorMetadataArgs.js';
+import type { InterceptorMetadataArgs } from '../metadata/args/InterceptorMetadataArgs.js';
 
 /**
  * Storage all metadatas read from decorators.

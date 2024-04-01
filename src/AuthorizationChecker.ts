@@ -1,4 +1,4 @@
-import { Action } from './Action';
+import type { Action } from './Action.js';
 
 /**
  * Special function used to check user authorization roles per request.

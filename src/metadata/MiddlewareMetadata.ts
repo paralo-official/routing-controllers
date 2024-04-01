@@ -1,8 +1,8 @@
-import { MiddlewareMetadataArgs } from './args/MiddlewareMetadataArgs';
-import { ExpressMiddlewareInterface } from '../driver/express/ExpressMiddlewareInterface';
-import { ExpressErrorMiddlewareInterface } from '../driver/express/ExpressErrorMiddlewareInterface';
-import { getFromContainer } from '../container';
-import { KoaMiddlewareInterface } from '../driver/koa/KoaMiddlewareInterface';
+import type { MiddlewareMetadataArgs } from './args/MiddlewareMetadataArgs.js';
+import type { ExpressMiddlewareInterface } from '../driver/express/ExpressMiddlewareInterface.js';
+import type { ExpressErrorMiddlewareInterface } from '../driver/express/ExpressErrorMiddlewareInterface.js';
+import { getFromContainer } from '../container.js';
+import type { KoaMiddlewareInterface } from '../driver/koa/KoaMiddlewareInterface.js';
 
 /**
  * Middleware metadata.

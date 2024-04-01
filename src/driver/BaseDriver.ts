@@ -1,14 +1,14 @@
-import { ValidatorOptions } from 'class-validator';
-import { ClassTransformOptions, instanceToPlain } from 'class-transformer';
+import type { ValidatorOptions } from 'class-validator';
+import { type ClassTransformOptions, instanceToPlain } from 'class-transformer';
 
-import { HttpError } from '../http-error/HttpError';
-import { CurrentUserChecker } from '../CurrentUserChecker';
-import { AuthorizationChecker } from '../AuthorizationChecker';
-import { ActionMetadata } from '../metadata/ActionMetadata';
-import { ParamMetadata } from '../metadata/ParamMetadata';
-import { MiddlewareMetadata } from '../metadata/MiddlewareMetadata';
-import { Action } from '../Action';
-import { RoutingControllersOptions } from '../RoutingControllersOptions';
+import { HttpError } from '../http-error/HttpError.js';
+import type { CurrentUserChecker } from '../CurrentUserChecker.js';
+import type { AuthorizationChecker } from '../AuthorizationChecker.js';
+import { ActionMetadata } from '../metadata/ActionMetadata.js';
+import { ParamMetadata } from '../metadata/ParamMetadata.js';
+import { MiddlewareMetadata } from '../metadata/MiddlewareMetadata.js';
+import type { Action } from '../Action.js';
+import type { RoutingControllersOptions } from '../RoutingControllersOptions.js';
 
 /**
  * Base driver functionality for all other drivers.

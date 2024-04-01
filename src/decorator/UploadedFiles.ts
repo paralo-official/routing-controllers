@@ -1,5 +1,5 @@
-import { UploadOptions } from '../decorator-options/UploadOptions';
-import { getMetadataArgsStorage } from '../index';
+import type { UploadOptions } from '../decorator-options/UploadOptions.js';
+import { getMetadataArgsStorage } from '../index.js';
 
 /**
  * Injects all uploaded files to the controller action parameter.

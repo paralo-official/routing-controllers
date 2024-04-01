@@ -1,5 +1,5 @@
-import { ResponseHandlerMetadataArgs } from './args/ResponseHandleMetadataArgs';
-import { ResponseHandlerType } from './types/ResponseHandlerType';
+import type { ResponseHandlerMetadataArgs } from './args/ResponseHandleMetadataArgs.js';
+import type { ResponseHandlerType } from './types/ResponseHandlerType.js';
 
 /**
  * Response handler metadata.

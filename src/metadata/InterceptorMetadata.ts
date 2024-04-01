@@ -1,4 +1,4 @@
-import { UseInterceptorMetadataArgs } from './args/UseInterceptorMetadataArgs';
+import type { UseInterceptorMetadataArgs } from './args/UseInterceptorMetadataArgs.js';
 
 /**
  * "Use interceptor" metadata.

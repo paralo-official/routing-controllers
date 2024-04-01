@@ -1,17 +1,17 @@
-import { Action } from '../../Action';
-import { ActionMetadata } from '../../metadata/ActionMetadata';
-import { BaseDriver } from '../BaseDriver';
-import { MiddlewareMetadata } from '../../metadata/MiddlewareMetadata';
-import { ParamMetadata } from '../../metadata/ParamMetadata';
-import { UseMetadata } from '../../metadata/UseMetadata';
-import { KoaMiddlewareInterface } from './KoaMiddlewareInterface';
-import { AuthorizationCheckerNotDefinedError } from '../../error/AuthorizationCheckerNotDefinedError';
-import { AccessDeniedError } from '../../error/AccessDeniedError';
-import { isPromiseLike } from '../../util/isPromiseLike';
-import { getFromContainer } from '../../container';
-import { RoleChecker } from '../../RoleChecker';
-import { AuthorizationRequiredError } from '../../error/AuthorizationRequiredError';
-import { HttpError, NotFoundError } from '../../index';
+import type { Action } from '../../Action.js';
+import { ActionMetadata } from '../../metadata/ActionMetadata.js';
+import { BaseDriver } from '../BaseDriver.js';
+import { MiddlewareMetadata } from '../../metadata/MiddlewareMetadata.js';
+import { ParamMetadata } from '../../metadata/ParamMetadata.js';
+import { UseMetadata } from '../../metadata/UseMetadata.js';
+import type { KoaMiddlewareInterface } from './KoaMiddlewareInterface.js';
+import { AuthorizationCheckerNotDefinedError } from '../../error/AuthorizationCheckerNotDefinedError.js';
+import { AccessDeniedError } from '../../error/AccessDeniedError.js';
+import { isPromiseLike } from '../../util/isPromiseLike.js';
+import { getFromContainer } from '../../container.js';
+import type { RoleChecker } from '../../RoleChecker.js';
+import { AuthorizationRequiredError } from '../../error/AuthorizationRequiredError.js';
+import { HttpError, NotFoundError } from '../../index.js';
 
 import cookie from 'cookie';
 // @ts-ignore
