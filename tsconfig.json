@@ -8,6 +8,8 @@
     ],
     "outDir": "build/node",
     "rootDir": "./src",
+    "declaration": true,
+    "declarationMap": true,
     "strict": true,
     "strictPropertyInitialization": false,
     "strictNullChecks": false,

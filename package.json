@@ -1,19 +1,33 @@
 {
-  "name": "routing-controllers",
+  "name": "@paralo-official/routing-controllers",
   "private": false,
-  "version": "0.10.4",
+  "version": "0.11.4",
   "description": "Create structured, declarative and beautifully organized class-based controllers with heavy decorators usage for Express / Koa using TypeScript.",
   "author": "TypeStack contributors",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
-  "main": "./esm/index.js",
-  "module": "./esm/index.js",
-  "es2015": "./esm/index.js",
-  "typings": "./types/index.d.ts",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./build/index.js",
+      "types": "./build/index.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./build/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "./build"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/typestack/routing-controllers.git"
+    "url": "https://github.com/paralo-official/routing-controllers.git"
   },
   "tags": [
     "express",
@@ -25,9 +39,10 @@
     "controllers"
   ],
   "scripts": {
+    "prepack": "npm run build",
     "build": "npm run build:esm",
     "build:clean": "rimraf build",
-    "build:esm": "tsc --project tsconfig.prod.esm.json",
+    "build:esm": "tsc --project tsconfig.prod.json",
     "build:types": "tsc --project tsconfig.prod.types.json",
     "prettier:fix": "prettier --write \"**/*.{ts,md}\"",
     "prettier:check": "prettier --check \"**/*.{ts,md}\"",
