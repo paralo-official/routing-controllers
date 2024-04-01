@@ -13,10 +13,9 @@ import { getFromContainer } from '../../container';
 import { AuthorizationRequiredError } from '../../error/AuthorizationRequiredError';
 import { NotFoundError, RoutingControllersOptions } from '../../index';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const cookie = require('cookie');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const templateUrl = require('template-url');
+import cookie from 'cookie';
+// @ts-ignore
+import templateUrl from 'template-url';
 
 /**
  * Integration with express framework.
@@ -28,8 +27,6 @@ export class ExpressDriver extends BaseDriver {
 
   constructor(public express?: any) {
     super();
-    this.loadExpress();
-    this.app = this.express;
   }
 
   // -------------------------------------------------------------------------
@@ -39,10 +36,9 @@ export class ExpressDriver extends BaseDriver {
   /**
    * Initializes the things driver needs before routes and middlewares registration.
    */
-  initialize() {
+  async initialize() {
     if (this.cors) {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const cors = require('cors');
+      const { default: cors } = await import('cors');
       if (this.cors === true) {
         this.express.use(cors());
       } else {
@@ -95,15 +91,17 @@ export class ExpressDriver extends BaseDriver {
   /**
    * Registers action in the driver.
    */
-  registerAction(actionMetadata: ActionMetadata, executeCallback: (options: Action) => any): void {
+  async registerAction(actionMetadata: ActionMetadata, executeCallback: (options: Action) => any): Promise<void> {
     // middlewares required for this action
     const defaultMiddlewares: any[] = [];
 
     if (actionMetadata.isBodyUsed) {
       if (actionMetadata.isJsonTyped) {
-        defaultMiddlewares.push(this.loadBodyParser().json(actionMetadata.bodyExtraOptions));
+        const { json } = await this.loadBodyParser();
+        defaultMiddlewares.push(json(actionMetadata.bodyExtraOptions));
       } else {
-        defaultMiddlewares.push(this.loadBodyParser().text(actionMetadata.bodyExtraOptions));
+        const { text } = await this.loadBodyParser();
+        defaultMiddlewares.push(text(actionMetadata.bodyExtraOptions));
       }
     }
 
@@ -141,7 +139,7 @@ export class ExpressDriver extends BaseDriver {
     }
 
     if (actionMetadata.isFileUsed || actionMetadata.isFilesUsed) {
-      const multer = this.loadMulter();
+      const multer = await this.loadMulter();
       actionMetadata.params
         .filter(param => param.type === 'file')
         .forEach(param => {
@@ -182,7 +180,7 @@ export class ExpressDriver extends BaseDriver {
 
     // finally register action in express
     this.express[actionMetadata.type.toLowerCase()](
-      ...[route, routeGuard, ...beforeMiddlewares, ...defaultMiddlewares, routeHandler, ...afterMiddlewares]
+      ...[route, routeGuard, ...beforeMiddlewares, ...defaultMiddlewares, routeHandler, ...afterMiddlewares],
     );
   }
 
@@ -190,7 +188,8 @@ export class ExpressDriver extends BaseDriver {
    * Registers all routes in the framework.
    */
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  registerRoutes() {}
+  registerRoutes() {
+  }
 
   /**
    * Gets param from the request.
@@ -382,6 +381,22 @@ export class ExpressDriver extends BaseDriver {
     options.next(error);
   }
 
+  /**
+   * Dynamically loads express module.
+   */
+  public async loadExpress() {
+    if (!this.express) {
+      try {
+        const { default: expressLib } = await import('express');
+        this.express = expressLib();
+      } catch (e) {
+        throw new Error('express package was not found installed. Try to install it: npm install express --save');
+      }
+    }
+
+    this.app = this.express;
+  }
+
   // -------------------------------------------------------------------------
   // Protected Methods
   // -------------------------------------------------------------------------
@@ -411,12 +426,12 @@ export class ExpressDriver extends BaseDriver {
         });
       } else if (use.middleware.prototype && use.middleware.prototype.error) {
         // if this is function instance of ErrorMiddlewareInterface
-        middlewareFunctions.push(function (error: any, request: any, response: any, next: (err: any) => any) {
+        middlewareFunctions.push(function(error: any, request: any, response: any, next: (err: any) => any) {
           return getFromContainer<ExpressErrorMiddlewareInterface>(use.middleware).error(
             error,
             request,
             response,
-            next
+            next,
           );
         });
       } else {
@@ -427,29 +442,11 @@ export class ExpressDriver extends BaseDriver {
   }
 
   /**
-   * Dynamically loads express module.
-   */
-  protected loadExpress() {
-    if (require) {
-      if (!this.express) {
-        try {
-          // eslint-disable-next-line @typescript-eslint/no-var-requires
-          this.express = require('express')();
-        } catch (e) {
-          throw new Error('express package was not found installed. Try to install it: npm install express --save');
-        }
-      }
-    } else {
-      throw new Error('Cannot load express. Try to install all required dependencies.');
-    }
-  }
-
-  /**
    * Dynamically loads body-parser module.
    */
-  protected loadBodyParser() {
+  protected async loadBodyParser() {
     try {
-      return require('body-parser');
+      return await import('body-parser');
     } catch (e) {
       throw new Error('body-parser package was not found installed. Try to install it: npm install body-parser --save');
     }
@@ -458,9 +455,11 @@ export class ExpressDriver extends BaseDriver {
   /**
    * Dynamically loads multer module.
    */
-  protected loadMulter() {
+  protected async loadMulter() {
     try {
-      return require('multer');
+      const { default: multer } = await import('multer');
+
+      return multer;
     } catch (e) {
       throw new Error('multer package was not found installed. Try to install it: npm install multer --save');
     }

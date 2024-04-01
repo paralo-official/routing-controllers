@@ -6,7 +6,7 @@ import { ParamType } from '../src/metadata/types/ParamType';
 
 const expect = require('chakram').expect;
 
-describe('ActionParameterHandler', () => {
+describe('ActionParameterHandler', async () => {
   const buildParamMetadata = (
     name: string = 'id',
     type: ParamType = 'param',
@@ -51,6 +51,7 @@ describe('ActionParameterHandler', () => {
     };
   };
   const driver = new ExpressDriver();
+  await driver.loadExpress();
   const actionParameterHandler = new ActionParameterHandler(driver);
 
   describe('positive', () => {

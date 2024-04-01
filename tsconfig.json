@@ -3,10 +3,14 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "es2018",
-    "lib": ["es2018"],
+    "lib": [
+      "es2018"
+    ],
     "outDir": "build/node",
     "rootDir": "./src",
     "strict": true,
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
     "sourceMap": true,
     "inlineSources": true,
     "removeComments": false,
@@ -15,5 +19,11 @@
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true
   },
-  "exclude": ["build", "node_modules", "sample", "**/*.spec.ts", "test/**"]
+  "exclude": [
+    "build",
+    "node_modules",
+    "sample",
+    "**/*.spec.ts",
+    "test/**"
+  ]
 }

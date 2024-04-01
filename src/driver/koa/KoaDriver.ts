@@ -13,10 +13,9 @@ import { RoleChecker } from '../../RoleChecker';
 import { AuthorizationRequiredError } from '../../error/AuthorizationRequiredError';
 import { HttpError, NotFoundError } from '../../index';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const cookie = require('cookie');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const templateUrl = require('template-url');
+import cookie from 'cookie';
+// @ts-ignore
+import templateUrl from 'template-url';
 
 /**
  * Integration with koa framework.
@@ -28,9 +27,12 @@ export class KoaDriver extends BaseDriver {
 
   constructor(public koa?: any, public router?: any) {
     super();
-    this.loadKoa();
-    this.loadRouter();
     this.app = this.koa;
+  }
+
+  public async initializeKoa(): Promise<void> {
+    await this.loadKoa();
+    await this.loadRouter();
   }
 
   // -------------------------------------------------------------------------
@@ -40,13 +42,11 @@ export class KoaDriver extends BaseDriver {
   /**
    * Initializes the things driver needs before routes and middleware registration.
    */
-  initialize() {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const bodyParser = require('koa-bodyparser');
+  async initialize() {
+    const {default: bodyParser} = await import('koa-bodyparser');
     this.koa.use(bodyParser());
     if (this.cors) {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const cors = require('@koa/cors');
+      const {default: cors} = await import('@koa/cors');
       if (this.cors === true) {
         this.koa.use(cors());
       } else {
@@ -60,7 +60,7 @@ export class KoaDriver extends BaseDriver {
    */
   registerMiddleware(middleware: MiddlewareMetadata): void {
     if ((middleware.instance as KoaMiddlewareInterface).use) {
-      this.koa.use(function (ctx: any, next: any) {
+      this.koa.use(function(ctx: any, next: any) {
         return (middleware.instance as KoaMiddlewareInterface).use(ctx, next);
       });
     }
@@ -69,7 +69,7 @@ export class KoaDriver extends BaseDriver {
   /**
    * Registers action in the driver.
    */
-  registerAction(actionMetadata: ActionMetadata, executeCallback: (options: Action) => any): void {
+  async registerAction(actionMetadata: ActionMetadata, executeCallback: (options: Action) => any): Promise<void> {
     // middlewares required for this action
     const defaultMiddlewares: any[] = [];
 
@@ -110,7 +110,7 @@ export class KoaDriver extends BaseDriver {
     }
 
     if (actionMetadata.isFileUsed || actionMetadata.isFilesUsed) {
-      const multer = this.loadMulter();
+      const multer = await this.loadMulter();
       actionMetadata.params
         .filter(param => param.type === 'file')
         .forEach(param => {
@@ -154,7 +154,7 @@ export class KoaDriver extends BaseDriver {
 
     // finally register action in koa
     this.router[actionMetadata.type.toLowerCase()](
-      ...[route, routeGuard, ...beforeMiddlewares, ...defaultMiddlewares, routeHandler, ...afterMiddlewares]
+      ...[route, routeGuard, ...beforeMiddlewares, ...defaultMiddlewares, routeHandler, ...afterMiddlewares],
     );
   }
 
@@ -249,7 +249,7 @@ export class KoaDriver extends BaseDriver {
       // if template is set then render it // TODO: not working in koa
       const renderOptions = result && result instanceof Object ? result : {};
 
-      this.koa.use(async function (ctx: any, next: any) {
+      this.koa.use(async function(ctx: any, next: any) {
         await ctx.render(action.renderedTemplate, renderOptions);
       });
     } else if (result === undefined) {
@@ -358,31 +358,29 @@ export class KoaDriver extends BaseDriver {
   /**
    * Dynamically loads koa module.
    */
-  protected loadKoa() {
-    if (require) {
+  protected async loadKoa() {
       if (!this.koa) {
         try {
-          this.koa = new (require('koa'))();
+          const {default: Koa} = await import('koa');
+          this.koa = new Koa();
         } catch (e) {
           throw new Error('koa package was not found installed. Try to install it: npm install koa@next --save');
         }
       }
-    } else {
-      throw new Error('Cannot load koa. Try to install all required dependencies.');
-    }
   }
 
   /**
    * Dynamically loads @koa/router module.
    */
-  private loadRouter() {
+  private async loadRouter() {
     if (require) {
       if (!this.router) {
         try {
-          this.router = new (require('@koa/router'))();
+          const {default: KoaRouter} = await import("@koa/router");
+          this.router = new KoaRouter();
         } catch (e) {
           throw new Error(
-            '@koa/router package was not found installed. Try to install it: npm install @koa/router --save'
+            '@koa/router package was not found installed. Try to install it: npm install @koa/router --save',
           );
         }
       }
@@ -394,9 +392,11 @@ export class KoaDriver extends BaseDriver {
   /**
    * Dynamically loads @koa/multer module.
    */
-  private loadMulter() {
+  private async loadMulter() {
     try {
-      return require('@koa/multer');
+      const {default: koaMulter} = await import('@koa/multer');
+
+      return koaMulter;
     } catch (e) {
       throw new Error('@koa/multer package was not found installed. Try to install it: npm install @koa/multer --save');
     }
