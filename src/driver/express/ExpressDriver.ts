@@ -96,12 +96,12 @@ export class ExpressDriver extends BaseDriver {
     const defaultMiddlewares: any[] = [];
 
     if (actionMetadata.isBodyUsed) {
+      const bodyParser = await this.loadBodyParser();
+
       if (actionMetadata.isJsonTyped) {
-        const { json } = await this.loadBodyParser();
-        defaultMiddlewares.push(json(actionMetadata.bodyExtraOptions));
+        defaultMiddlewares.push(bodyParser.json(actionMetadata.bodyExtraOptions));
       } else {
-        const { text } = await this.loadBodyParser();
-        defaultMiddlewares.push(text(actionMetadata.bodyExtraOptions));
+        defaultMiddlewares.push(bodyParser.text(actionMetadata.bodyExtraOptions));
       }
     }
 
@@ -446,7 +446,9 @@ export class ExpressDriver extends BaseDriver {
    */
   protected async loadBodyParser() {
     try {
-      return await import('body-parser');
+      const { default: bodyParser } = await import('body-parser');
+
+      return bodyParser;
     } catch (e) {
       throw new Error('body-parser package was not found installed. Try to install it: npm install body-parser --save');
     }
