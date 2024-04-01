@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "module": "ESNext",
+        "module": "NodeNext",
         "outDir": "build",
         "moduleResolution": "nodenext",
         "target": "ESNext",
@@ -22,11 +22,7 @@
         "forceConsistentCasingInFileNames": true,
         "verbatimModuleSyntax": true
     },
-    "exclude": [
-        "build",
-        "node_modules",
-        "sample",
-        "**/*.spec.ts",
-        "test/**"
+    "include": [
+        "./src/**/*.ts"
     ]
 }
