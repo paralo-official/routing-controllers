@@ -1,31 +1,32 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "target": "es2018",
-    "lib": [
-      "es2018"
-    ],
-    "outDir": "build/node",
-    "rootDir": "./src",
-    "declaration": true,
-    "declarationMap": true,
-    "strict": true,
-    "strictPropertyInitialization": false,
-    "strictNullChecks": false,
-    "sourceMap": true,
-    "inlineSources": true,
-    "removeComments": false,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "exclude": [
-    "build",
-    "node_modules",
-    "sample",
-    "**/*.spec.ts",
-    "test/**"
-  ]
+    "compilerOptions": {
+        "module": "ESNext",
+        "outDir": "build",
+        "moduleResolution": "nodenext",
+        "target": "ESNext",
+        "lib": [
+            "ES2023"
+        ],
+        "rootDir": "./src",
+        "declaration": true,
+        "declarationMap": true,
+        "strict": true,
+        "strictPropertyInitialization": false,
+        "strictNullChecks": false,
+        "sourceMap": true,
+        "inlineSources": true,
+        "removeComments": false,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "forceConsistentCasingInFileNames": true,
+        "verbatimModuleSyntax": true
+    },
+    "exclude": [
+        "build",
+        "node_modules",
+        "sample",
+        "**/*.spec.ts",
+        "test/**"
+    ]
 }
