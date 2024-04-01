@@ -10,6 +10,9 @@ English | [中文](./docs/lang/chinese/README.md)
 Allows to create controller classes with methods as actions that handle requests.
 You can use routing-controllers with [express.js][1] or [koa.js][2].
 
+**This fork supports ES modules properly, replaces all internal `require` calls for optional dependency loading
+with `import` statements, and removes CJS support.**
+
 # Table of Contents
 
 - [Installation](#installation)
