@@ -179,7 +179,7 @@ export class ExpressDriver extends BaseDriver {
 
     // finally register action in express
     this.express[actionMetadata.type.toLowerCase()](
-      ...[route, routeGuard, ...beforeMiddlewares, ...defaultMiddlewares, routeHandler, ...afterMiddlewares],
+      ...[route, routeGuard, ...beforeMiddlewares, ...defaultMiddlewares, routeHandler, ...afterMiddlewares]
     );
   }
 
@@ -187,8 +187,7 @@ export class ExpressDriver extends BaseDriver {
    * Registers all routes in the framework.
    */
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  registerRoutes() {
-  }
+  registerRoutes() {}
 
   /**
    * Gets param from the request.
@@ -425,12 +424,12 @@ export class ExpressDriver extends BaseDriver {
         });
       } else if (use.middleware.prototype && use.middleware.prototype.error) {
         // if this is function instance of ErrorMiddlewareInterface
-        middlewareFunctions.push(function(error: any, request: any, response: any, next: (err: any) => any) {
+        middlewareFunctions.push(function (error: any, request: any, response: any, next: (err: any) => any) {
           return getFromContainer<ExpressErrorMiddlewareInterface>(use.middleware).error(
             error,
             request,
             response,
-            next,
+            next
           );
         });
       } else {

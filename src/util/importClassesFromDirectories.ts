@@ -4,8 +4,11 @@ import { globSync } from 'glob';
 /**
  * Loads all exported classes from the given directory.
  */
-export async function importClassesFromDirectories(directories: string[], formats = ['.js', '.ts', '.tsx']): Promise<Function[]> {
-  const loadFileClasses = function(exported: any, allLoaded: Function[]) {
+export async function importClassesFromDirectories(
+  directories: string[],
+  formats = ['.js', '.ts', '.tsx']
+): Promise<Function[]> {
+  const loadFileClasses = function (exported: any, allLoaded: Function[]) {
     if (exported instanceof Function) {
       allLoaded.push(exported);
     } else if (exported instanceof Array) {
@@ -23,14 +26,16 @@ export async function importClassesFromDirectories(directories: string[], format
     return allDirs.concat(globSync(normalize(dir).replace(/\\/g, '/')));
   }, [] as string[]);
 
-  const dirs = await Promise.all(allFiles
-    .filter(file => {
-      const dtsExtension = file.substring(file.length - 5, file.length);
-      return formats.indexOf(extname(file)) !== -1 && dtsExtension !== '.d.ts';
-    })
-    .map(file => {
-      return import(file);
-    }));
+  const dirs = await Promise.all(
+    allFiles
+      .filter(file => {
+        const dtsExtension = file.substring(file.length - 5, file.length);
+        return formats.indexOf(extname(file)) !== -1 && dtsExtension !== '.d.ts';
+      })
+      .map(file => {
+        return import(file);
+      })
+  );
 
   return loadFileClasses(dirs, []);
 }

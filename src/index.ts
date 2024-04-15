@@ -158,7 +158,10 @@ export async function createServer<T extends BaseDriver>(driver: T, options?: Ro
 /**
  * Registers all loaded actions in your express application.
  */
-export async function createExecutor<T extends BaseDriver>(driver: T, options: RoutingControllersOptions = {}): Promise<void> {
+export async function createExecutor<T extends BaseDriver>(
+  driver: T,
+  options: RoutingControllersOptions = {}
+): Promise<void> {
   // import all controllers and middlewares and error handlers (new way)
   let controllerClasses: Function[];
   if (options && options.controllers && options.controllers.length) {
@@ -230,7 +233,7 @@ export async function createExecutor<T extends BaseDriver>(driver: T, options: R
  * Registers custom parameter decorator used in the controller actions.
  */
 export function createParamDecorator(options: CustomParameterDecorator) {
-  return function(object: Object, method: string, index: number) {
+  return function (object: Object, method: string, index: number) {
     getMetadataArgsStorage().params.push({
       type: 'custom-converter',
       object: object,
