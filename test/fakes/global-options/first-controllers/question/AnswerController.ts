@@ -1,5 +1,5 @@
-import { JsonController } from '../../../../../src/decorator/JsonController';
-import { Get } from '../../../../../src/decorator/Get';
+import { JsonController } from '../../../../../src/decorator/JsonController.js';
+import { Get } from '../../../../../src/decorator/Get.js';
 
 @JsonController()
 export class AnswerController {

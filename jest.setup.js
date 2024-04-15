@@ -1,3 +1,4 @@
-jest.setTimeout(30000);
+import 'reflect-metadata';
+import { jest } from '@jest/globals';
 
-require("reflect-metadata");
+jest.setTimeout(30000);

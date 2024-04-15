@@ -1,6 +1,6 @@
-import { ExpressMiddlewareInterface } from '../../../../src/driver/express/ExpressMiddlewareInterface';
-import { defaultFakeService } from '../FakeService';
-import { Middleware } from '../../../../src/decorator/Middleware';
+import type { ExpressMiddlewareInterface } from '../../../../src/driver/express/ExpressMiddlewareInterface.js';
+import { defaultFakeService } from '../FakeService.js';
+import { Middleware } from '../../../../src/decorator/Middleware.js';
 
 @Middleware({ type: 'before' })
 export class FileMiddleware implements ExpressMiddlewareInterface {

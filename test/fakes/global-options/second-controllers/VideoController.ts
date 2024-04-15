@@ -1,5 +1,5 @@
-import { Controller } from '../../../../src/decorator/Controller';
-import { Get } from '../../../../src/decorator/Get';
+import { Controller } from '../../../../src/decorator/Controller.js';
+import { Get } from '../../../../src/decorator/Get.js';
 
 @Controller()
 export class VideoController {

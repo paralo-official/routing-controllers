@@ -1,6 +1,6 @@
-import { ExpressErrorMiddlewareInterface } from '../../../../../src/driver/express/ExpressErrorMiddlewareInterface';
-import { defaultFakeService } from '../../FakeService';
-import { Middleware } from '../../../../../src/decorator/Middleware';
+import type { ExpressErrorMiddlewareInterface } from '../../../../../src/driver/express/ExpressErrorMiddlewareInterface.js';
+import { defaultFakeService } from '../../FakeService.js';
+import { Middleware } from '../../../../../src/decorator/Middleware.js';
 
 @Middleware({ type: 'after' })
 export class QuestionErrorHandler implements ExpressErrorMiddlewareInterface {
