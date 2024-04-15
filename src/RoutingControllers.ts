@@ -49,55 +49,52 @@ export class RoutingControllers<T extends BaseDriver> {
   /**
    * Initializes the things driver needs before routes and middleware registration.
    */
-  initialize(): this {
-    this.driver.initialize();
-    return this;
+  async initialize(): Promise<void> {
+    await this.driver.initialize();
   }
 
   /**
    * Registers all given interceptors.
    */
-  registerInterceptors(classes?: Function[]): this {
+  registerInterceptors(classes?: Function[]): void {
     const interceptors = this.metadataBuilder
       .buildInterceptorMetadata(classes)
       .sort((middleware1, middleware2) => middleware1.priority - middleware2.priority)
       .reverse();
     this.interceptors.push(...interceptors);
-    return this;
   }
 
   /**
    * Registers all given controllers and actions from those controllers.
    */
-  registerControllers(classes?: Function[]): this {
+  async registerControllers(classes?: Function[]): Promise<void> {
     const controllers = this.metadataBuilder.buildControllerMetadata(classes);
-    controllers.forEach(controller => {
-      controller.actions.forEach(actionMetadata => {
+
+    for (const controller of controllers) {
+      for (const actionMetadata of controller.actions) {
         const interceptorFns = this.prepareInterceptors([
           ...this.interceptors,
           ...actionMetadata.controllerMetadata.interceptors,
           ...actionMetadata.interceptors,
         ]);
-        this.driver.registerAction(actionMetadata, (action: Action) => {
+
+        await this.driver.registerAction(actionMetadata, (action: Action) => {
           return this.executeAction(actionMetadata, action, interceptorFns);
         });
-      });
-    });
+      }
+    }
     this.driver.registerRoutes();
-    return this;
   }
 
   /**
    * Registers post-execution middlewares in the driver.
    */
-  registerMiddlewares(type: 'before' | 'after', classes?: Function[]): this {
+  registerMiddlewares(type: 'before' | 'after', classes?: Function[]): void {
     this.metadataBuilder
       .buildMiddlewareMetadata(classes)
       .filter(middleware => middleware.global && middleware.type === type)
       .sort((middleware1, middleware2) => middleware2.priority - middleware1.priority)
       .forEach(middleware => this.driver.registerMiddleware(middleware, this.options));
-
-    return this;
   }
 
   // -------------------------------------------------------------------------
@@ -168,6 +165,7 @@ export class RoutingControllers<T extends BaseDriver> {
       }
     }
   }
+
   /**
    * Creates interceptors from the given "use interceptors".
    */

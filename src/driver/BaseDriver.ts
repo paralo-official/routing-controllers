@@ -176,7 +176,7 @@ export abstract class BaseDriver {
   /**
    * Initializes the things driver needs before routes and middleware registration.
    */
-  abstract initialize(): void;
+  abstract initialize(): Promise<void>;
 
   /**
    * Registers given middleware.
@@ -186,7 +186,7 @@ export abstract class BaseDriver {
   /**
    * Registers action in the driver.
    */
-  abstract registerAction(action: ActionMetadata, executeCallback: (options: Action) => any): void;
+  abstract registerAction(action: ActionMetadata, executeCallback: (options: Action) => any): Promise<void>;
 
   /**
    * Registers all routes in the framework.

@@ -16,11 +16,16 @@ import { NotFoundError, type RoutingControllersOptions } from '../../index.js';
 import cookie from 'cookie';
 // @ts-ignore
 import templateUrl from 'template-url';
+import type { BodyParser } from 'body-parser';
+import type multerType from 'multer';
 
 /**
  * Integration with express framework.
  */
 export class ExpressDriver extends BaseDriver {
+  private cachedBodyParser: BodyParser | undefined;
+  private cachedMulter: typeof multerType | undefined;
+
   // -------------------------------------------------------------------------
   // Constructor
   // -------------------------------------------------------------------------
@@ -442,9 +447,14 @@ export class ExpressDriver extends BaseDriver {
   /**
    * Dynamically loads body-parser module.
    */
-  protected async loadBodyParser() {
+  protected async loadBodyParser(): Promise<BodyParser> {
+    if (this.cachedBodyParser) {
+      return this.cachedBodyParser;
+    }
+
     try {
       const { default: bodyParser } = await import('body-parser');
+      this.cachedBodyParser = bodyParser;
 
       return bodyParser;
     } catch (e) {
@@ -455,9 +465,14 @@ export class ExpressDriver extends BaseDriver {
   /**
    * Dynamically loads multer module.
    */
-  protected async loadMulter() {
+  protected async loadMulter(): Promise<typeof multerType> {
+    if (this.cachedMulter) {
+      return this.cachedMulter;
+    }
+
     try {
       const { default: multer } = await import('multer');
+      this.cachedMulter = multer;
 
       return multer;
     } catch (e) {

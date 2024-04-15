@@ -221,12 +221,12 @@ export async function createExecutor<T extends BaseDriver>(
   driver.cors = options.cors;
 
   // next create a controller executor
-  new RoutingControllers(driver, options)
-    .initialize()
-    .registerInterceptors(interceptorClasses)
-    .registerMiddlewares('before', middlewareClasses)
-    .registerControllers(controllerClasses)
-    .registerMiddlewares('after', middlewareClasses); // todo: register only for loaded controllers?
+  const routingControllers = new RoutingControllers(driver, options);
+  await routingControllers.initialize();
+  routingControllers.registerInterceptors(interceptorClasses);
+  routingControllers.registerMiddlewares('before', middlewareClasses);
+  await routingControllers.registerControllers(controllerClasses);
+  routingControllers.registerMiddlewares('after', middlewareClasses); // todo: register only for loaded controllers?
 }
 
 /**
