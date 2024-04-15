@@ -31,7 +31,7 @@ jobs:
       - run: pnpm ci --ignore-scripts
       - run: pnpm prettier:check
       - run: pnpm lint:check
-      # - run: npm run test:ci
+      # - run: pnpm run test:ci
       - run: pnpm build
       - run: cp LICENSE build/LICENSE
       - run: cp README.md build/README.md
