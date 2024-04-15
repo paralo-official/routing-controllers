@@ -16,24 +16,21 @@
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
-  "main": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "main": "./index.js",
+  "types": "./index.d.ts",
   "exports": {
     ".": {
-      "import": "./build/index.js",
-      "types": "./build/index.d.ts"
+      "import": "./index.js",
+      "types": "./index.d.ts"
     }
   },
   "typesVersions": {
     "*": {
       ".": [
-        "./build/index.d.ts"
+        "./index.d.ts"
       ]
     }
   },
-  "files": [
-    "./build"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/paralo-official/routing-controllers.git"
