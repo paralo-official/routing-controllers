@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
-      - run: pnpm ci --ignore-scripts
+      - run: pnpm i --frozen-lockfile --ignore-scripts
       - run: pnpm run prettier:check
       - run: pnpm run lint:check
   tests:
@@ -37,7 +37,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
-      - run: pnpm ci --ignore-scripts
+      - run: pnpm i --frozen-lockfile --ignore-scripts
       # - run: pnpm run test:ci
   build:
     name: Build
@@ -58,5 +58,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
-      - run: pnpm ci --ignore-scripts
+      - run: pnpm i --frozen-lockfile --ignore-scripts
       - run: pnpm build

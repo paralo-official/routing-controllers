@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: 'lts/*'
           registry-url: https://registry.npmjs.org
-      - run: pnpm ci --ignore-scripts
+      - run: pnpm i --frozen-lockfile --ignore-scripts
       - run: pnpm prettier:check
       - run: pnpm lint:check
       # - run: pnpm run test:ci
