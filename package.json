@@ -6,7 +6,7 @@
   "author": "TypeStack contributors",
   "contributors": [
     {
-      "author": "TypeStack contributors"
+      "name": "TypeStack contributors"
     },
     {
       "name": "Moritz Hein",
@@ -38,6 +38,9 @@
     "type": "git",
     "url": "git+https://github.com/paralo-official/routing-controllers.git"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "tags": [
     "express",
     "express.js",
@@ -48,7 +51,6 @@
     "controllers"
   ],
   "scripts": {
-    "prepack": "npm run build",
     "build": "tsc --project tsconfig.build.json",
     "build:clean": "rimraf build",
     "prettier:fix": "prettier --write \"**/*.{ts,md}\"",
